@@ -6,9 +6,8 @@ describe MessHall do
   describe "#initialize" do
 
     it "will have Mess Hall set as it's name" do
-      test_string = "Mess Hall"
-      room = Room.new test_string
-      room.name.should eq test_string
+      room = MessHall.new
+      room.name.should eq "Mess Hall"
     end
 
   end

@@ -1,6 +1,6 @@
 require 'rooms/room'
 
-class LaunchControl
+class LaunchControl < Room
   
   def initialize
     super("Launch Control")
