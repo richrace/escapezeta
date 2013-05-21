@@ -1,4 +1,5 @@
 require 'rooms/room'
+require 'rooms/science_lab'
 
 class AirLock < Room
 
@@ -6,4 +7,7 @@ class AirLock < Room
     super("Air Lock")
   end
 
+  def move_up 
+    ScienceLab.new
+  end
 end

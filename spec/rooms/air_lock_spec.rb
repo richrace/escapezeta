@@ -1,16 +1,24 @@
 require 'spec_helper'
 require 'rooms/air_lock'
+require 'rooms/science_lab'
 
 describe AirLock do
 
+  before(:each) do
+    @room = AirLock.new
+  end
+
   describe "#initialize" do
 
-    it "will have Air Lock set as it's name" do
-      test_string = "Air Lock"
-      room = Room.new test_string
-      room.name.should eq test_string
+    it "will have Air Lock set as it's name" do      
+      @room.name.should eq "Air Lock"
     end
 
   end
-  
+
+  describe "#move_up" do
+    it "will return a science lab object as this is the new room" do
+      @room.move_up.class.should eq ScienceLab
+    end
+  end
 end
