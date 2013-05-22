@@ -80,7 +80,7 @@ class Game
     when "drop"
       handle_drop
     when "wear"
-      # to do
+      handle_wear
     when "use"
       # to do
     else
@@ -112,6 +112,22 @@ class Game
       if item.name.eql? drop.capitalize
         @current_room.contents << @inventory.items.delete(item)
         puts "Dropping #{item.name} in #{@current_room.name}"
+      else
+        puts "You can't drop #{item.name}"
+      end
+    end
+  end
+
+  def handle_wear
+    puts "What will you wear?"
+    Menu.prompt
+    wear = gets.chomp
+    @inventory.items.each do |item| 
+      if item.wearable? && item.name.eql?(wear.capitalize)
+        @player.wearing << @inventory.items.delete(item)
+        puts "Wearing #{item.name}"
+      else
+        puts "You can't wear #{item.name}"
       end
     end
   end
