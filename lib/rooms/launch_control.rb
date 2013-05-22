@@ -6,7 +6,7 @@ require 'rooms/mess_hall'
 class LaunchControl < Room
   
   def initialize
-    super("Launch Control")
+    super("Launch Control", ["Schematics", "First Aid Kit", "Coffee Mug", "Launch Dome Control"])
   end
 
   def move_up

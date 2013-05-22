@@ -3,7 +3,7 @@ require 'rooms/room'
 class ScienceLab < Room
   
   def initialize
-    super("Science Lab")
+    super("Science Lab", ["Plasma Cutter", "Chemicals", "USB Drive"])
   end
 
   def move_down

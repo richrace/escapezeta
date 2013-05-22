@@ -5,7 +5,7 @@ require 'rooms/science_lab'
 class CrewQuarters < Room
   
   def initialize
-    super("Crew Quarters")
+    super("Crew Quarters", ["Footlocker", "Soap", "Blanket", "Toothbrush"])
   end
 
   def move_up
