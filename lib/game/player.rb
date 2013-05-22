@@ -1,8 +1,9 @@
 class Player
-  attr_accessor :name
+  attr_accessor :name, :wearing
 
   def initialize(player_name)
     @name = player_name
+    @wearing = []
   end
 
   def print_name
