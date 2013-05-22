@@ -4,9 +4,12 @@ require 'rooms/crew_quarters'
 require 'rooms/mess_hall'
 
 class LaunchControl < Room
-  
+  attr_accessor :closed
+  alias :closed? :closed
+
   def initialize
     super("Launch Control")
+    @closed = true
 
     @contents << Item.new("Schematics", {:takeable => true, :usable => true, :wearable => false})
     @contents << Item.new("First Aid Kit", {:takeable => true, :usable => true, :wearable => false})
@@ -15,7 +18,12 @@ class LaunchControl < Room
   end
 
   def move_up
-    LaunchPad
+    if @closed
+      puts "Doors are closed!"
+      nil
+    else
+      LaunchPad
+    end
   end 
   
   def move_down
