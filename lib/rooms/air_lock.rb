@@ -8,7 +8,7 @@ class AirLock < Room
   end
 
   def move_up 
-    ScienceLab.new
+    ScienceLab
   end
 
 end
