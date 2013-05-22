@@ -6,8 +6,12 @@ class Inventory
   end
 
   def print_contents
-    puts "You are carrying:"
-    @items.each {|item| puts item.name}
+    if @items.size > 0
+      puts "You are carrying:"
+      @items.each {|item| puts item.name}
+    else
+      puts "You're not carrying anything!"
+    end
   end
 
 end
