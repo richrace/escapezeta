@@ -1,26 +1,28 @@
-class Room
-  CANNOT_MOVE = "You can't go that way!"
+require './lib/game/menu'
 
+class Room
   attr_accessor :contents, :name
 
-  def initialize(room_name)
+  def initialize(room_name, contents = [])
     @name = room_name
+    @contents = contents
   end
 
   def move_left
-    CANNOT_MOVE
+    nil
   end
 
   def move_right
-    CANNOT_MOVE
+    nil
   end
 
   def move_up
-    CANNOT_MOVE
+    nil
   end
 
   def move_down
-    CANNOT_MOVE
+    nil
   end
+
 
 end
