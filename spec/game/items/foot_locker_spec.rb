@@ -1,5 +1,5 @@
-require 'game/items/item'
-require 'game/items/foot_locker'
+require './lib/game/items/item'
+require './lib/game/items/foot_locker'
 
 describe FootLocker do
 
