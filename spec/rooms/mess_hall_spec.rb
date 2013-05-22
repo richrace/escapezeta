@@ -13,10 +13,10 @@ describe MessHall do
     end
 
     it "will have the correct contents" do
-      @room.contents.should have(3).items
-      @room.contents[0].name.should eq "Rations"
-      @room.contents[1].name.should eq "Rags"
-      @room.contents[2].name.should eq "Bleach"
+      @room.items.should have(3).items
+      @room.items[0].name.should eq "Rations"
+      @room.items[1].name.should eq "Rags"
+      @room.items[2].name.should eq "Bleach"
     end
   end
 

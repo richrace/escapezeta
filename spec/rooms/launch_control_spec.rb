@@ -13,11 +13,11 @@ describe LaunchControl do
     end
 
     it "will have the correct items in it" do
-      @room.contents.should have(4).items
-      @room.contents[0].name.should eq "Schematics"
-      @room.contents[1].name.should eq "First Aid Kit"
-      @room.contents[2].name.should eq "Coffee Mug"
-      @room.contents[3].name.should eq "Launch Dome Control"
+      @room.items.should have(4).items
+      @room.items[0].name.should eq "Schematics"
+      @room.items[1].name.should eq "First Aid Kit"
+      @room.items[2].name.should eq "Coffee Mug"
+      @room.items[3].name.should eq "Launch Dome Control"
     end
   end
 

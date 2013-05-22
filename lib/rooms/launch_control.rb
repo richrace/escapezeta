@@ -11,10 +11,10 @@ class LaunchControl < Room
     super("Launch Control")
     @closed = true
 
-    @contents << Item.new("Schematics", {:takeable => true, :usable => true, :wearable => false})
-    @contents << Item.new("First Aid Kit", {:takeable => true, :usable => true, :wearable => false})
-    @contents << Item.new("Coffee Mug", {:takeable => true, :usable => false, :wearable => false})
-    @contents << Item.new("Launch Dome Control", {:takeable => false, :usable => true, :wearable => false})
+    @items << Item.new("Schematics", {:takeable => true, :usable => true, :wearable => false})
+    @items << Item.new("First Aid Kit", {:takeable => true, :usable => true, :wearable => false})
+    @items << Item.new("Coffee Mug", {:takeable => true, :usable => false, :wearable => false})
+    @items << Item.new("Launch Dome Control", {:takeable => false, :usable => true, :wearable => false})
   end
 
   def move_up

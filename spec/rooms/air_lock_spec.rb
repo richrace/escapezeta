@@ -19,10 +19,10 @@ describe AirLock do
     end
 
     it "will have the correct items with it" do
-      @room.contents.should have(3).items
-      @room.contents[0].name.should eq "Spacesuit"
-      @room.contents[1].name.should eq "Clipboard"
-      @room.contents[2].name.should eq "Flashlight"
+      @room.items.should have(3).items
+      @room.items[0].name.should eq "Spacesuit"
+      @room.items[1].name.should eq "Clipboard"
+      @room.items[2].name.should eq "Flashlight"
     end
 
   end

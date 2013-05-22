@@ -13,10 +13,10 @@ describe ScienceLab do
     end
 
     it "will have the correct contents" do
-      @room.contents.should have(3).items
-      @room.contents[0].name.should eq "Plasma Cutter"
-      @room.contents[1].name.should eq "Chemicals"
-      @room.contents[2].name.should eq "USB Drive"
+      @room.items.should have(3).items
+      @room.items[0].name.should eq "Plasma Cutter"
+      @room.items[1].name.should eq "Chemicals"
+      @room.items[2].name.should eq "USB Drive"
     end
   end
 

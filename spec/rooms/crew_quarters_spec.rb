@@ -14,11 +14,11 @@ describe CrewQuarters do
     end
 
     it "will have the correct number of items" do
-      @room.contents.should have(4).items
-      @room.contents[0].name.should eq "Foot Locker"
-      @room.contents[1].name.should eq "Soap"
-      @room.contents[2].name.should eq "Blanket"
-      @room.contents[3].name.should eq "Toothbrush"
+      @room.items.should have(4).items
+      @room.items[0].name.should eq "Foot Locker"
+      @room.items[1].name.should eq "Soap"
+      @room.items[2].name.should eq "Blanket"
+      @room.items[3].name.should eq "Toothbrush"
     end
 
   end

@@ -1,8 +1,9 @@
-class Inventory
-  attr_accessor :items
+require 'game/items/has_items'
+
+class Inventory < HasItems
 
   def initialize
-    @items = [Item.new("Hairbrush", {:wearable => false, :useable => true, :takeable => true})]
+    @items = [Item.new("Hairbrush", {:wearable => false, :usable => true, :takeable => true})]
   end
 
   def print_contents

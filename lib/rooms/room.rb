@@ -1,11 +1,12 @@
 require 'game/menu'
+require 'game/items/has_items'
 
-class Room
-  attr_accessor :contents, :name
+class Room < HasItems
+  attr_accessor :name
 
   def initialize(room_name, contents = [])
     @name = room_name
-    @contents = contents
+    @items = contents
   end
 
   def move_left
@@ -26,11 +27,12 @@ class Room
 
   def print_room
     puts "The #{@name} of a space station. It contains:"
-    if @contents.nil? || @contents.empty?
+    if @items.nil? || @items.empty?
       puts "Nothing of interest." 
     else 
-      @contents.each {|item| puts item.name}
+      @items.each {|item| puts item.name}
     end
   end
+
 
 end
