@@ -78,7 +78,7 @@ class Game
     when "take"
       handle_take
     when "drop"
-      # to do
+      handle_drop
     when "wear"
       # to do
     when "use"
@@ -101,6 +101,18 @@ class Game
       puts "You have taken #{found_item.name}"
     else 
       puts "I couldn't find that item."
+    end
+  end
+
+  def handle_drop
+    puts "What will you drop?"
+    Menu.prompt
+    drop = gets.chomp
+    @inventory.items.each do |item| 
+      if item.name.eql? drop.capitalize
+        @current_room.contents << @inventory.items.delete(item)
+        puts "Dropping #{item.name} in #{@current_room.name}"
+      end
     end
   end
 
