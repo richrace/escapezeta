@@ -1,5 +1,6 @@
-require './lib/game/menu'
-require './lib/game/game'
+$LOAD_PATH << './lib'
+require 'game/menu'
+require 'game/game'
 
 puts "Welcome traveller, what's your name?"
 Menu.prompt
