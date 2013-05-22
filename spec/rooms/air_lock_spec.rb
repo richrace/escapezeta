@@ -18,7 +18,7 @@ describe AirLock do
 
   describe "#move_up" do
     it "will return a science lab object as this is the new room" do
-      @room.move_up.class.should eq ScienceLab
+      @room.move_up.should eq ScienceLab
     end
   end
 end

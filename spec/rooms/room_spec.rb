@@ -16,25 +16,25 @@ describe Room do
 
   describe "#move_right" do
     it "will get it cannot move message" do
-      @room.move_right.should eq "You can't go that way!"
+      @room.move_right.should be_nil
     end 
   end
   
   describe "#move_left" do
     it "will get it cannot move message" do
-      @room.move_left.should eq "You can't go that way!"
+      @room.move_left.should be_nil
     end 
   end
 
   describe "#move_up" do
     it "will get it cannot move message" do
-      @room.move_up.should eq "You can't go that way!"
+      @room.move_up.should be_nil
     end 
   end
 
   describe "#move_down" do
     it "will get it cannot move message" do
-      @room.move_down.should eq "You can't go that way!"
+      @room.move_down.should be_nil
     end 
   end
 
