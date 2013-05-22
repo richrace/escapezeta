@@ -18,12 +18,7 @@ class LaunchControl < Room
   end
 
   def move_up
-    if @closed
-      puts "Doors are closed!"
-      nil
-    else
-      LaunchPad
-    end
+    LaunchPad
   end 
   
   def move_down

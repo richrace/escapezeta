@@ -22,16 +22,8 @@ describe LaunchControl do
   end
 
   describe "#move_up" do
-    it "will give Launch Pad when the doors are open" do
-      @room.closed = false
-      @room.closed?.should be_false
+    it "will give Launch Pad" do
       @room.move_up.should eq LaunchPad
-    end
-
-    it "will give nil when the doors are closed" do
-      @room.closed = true
-      @room.closed?.should be_true
-      @room.move_up.should be_nil
     end
   end
 
