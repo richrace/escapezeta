@@ -3,7 +3,11 @@ require 'rooms/room'
 class ScienceLab < Room
   
   def initialize
-    super("Science Lab", ["Plasma Cutter", "Chemicals", "USB Drive"])
+    super("Science Lab")
+
+    @contents << Item.new("Plasma Cutter", {:takable => true, :useable => true, :wearable => false})
+    @contents << Item.new("Chemicals", {:takable => true, :useable => false, :wearable => false})
+    @contents << Item.new("USB Drive", {:takable => true, :useable => false, :wearable => false})
   end
 
   def move_down

@@ -6,6 +6,10 @@ class MessHall < Room
 
   def initialize
     super("Mess Hall")
+
+    @contents << Item.new("Rations", {:takable => true, :useable => true, :wearable => false})
+    @contents << Item.new("Rags", {:takable => true, :useable => true, :wearable => true})
+    @contents << Item.new("Bleach", {:takable => true, :useable => false, :wearable => false})
   end
 
   def move_down

@@ -72,11 +72,11 @@ class Game
     when "inventory"
       @inventory.print_contents
     when "look"
-      # to do
+      @current_room.print_room
     when "name"
       @player.print_name
     when "take"
-      # to do
+      handle_take
     when "drop"
       # to do
     when "wear"
@@ -87,6 +87,17 @@ class Game
       puts "I don't know what you've asked me to do."
     end
     preform_action get_command
+  end
+
+  def handle_take
+    puts "What will you take?"
+    take = gets.chomp
+    @contents.each { |item| found_item = @contents.delete item if item.takeable && item.name.eql?(take) }
+    if found_item
+      @inventory.items << found_item 
+      @inventory.print_contents
+      puts "You have taken #{found_item}"
+    end
   end
 
 end

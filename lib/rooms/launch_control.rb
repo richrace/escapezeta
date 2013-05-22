@@ -6,7 +6,12 @@ require 'rooms/mess_hall'
 class LaunchControl < Room
   
   def initialize
-    super("Launch Control", ["Schematics", "First Aid Kit", "Coffee Mug", "Launch Dome Control"])
+    super("Launch Control")
+
+    @contents << Item.new("Schematics", {:takable => true, :useable => true, :wearable => false})
+    @contents << Item.new("First Aid Kit", {:takable => true, :useable => true, :wearable => false})
+    @contents << Item.new("Coffee Mug", {:takable => true, :useable => false, :wearable => false})
+    @contents << Item.new("Launch Dome Control", {:takable => false, :useable => true, :wearable => false})
   end
 
   def move_up

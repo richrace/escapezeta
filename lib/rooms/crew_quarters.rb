@@ -1,11 +1,18 @@
 require 'rooms/room'
 require 'rooms/launch_control'
 require 'rooms/science_lab'
+require 'game/items/item'
+require 'game/items/foot_locker'
 
 class CrewQuarters < Room
   
   def initialize
-    super("Crew Quarters", ["Footlocker", "Soap", "Blanket", "Toothbrush"])
+    super("Crew Quarters")
+    
+    @contents << FootLocker.new
+    @contents << Item.new("Soap", {:takable => true, :useable => true, :wearable => false})
+    @contents << Item.new("Blanket", {:takable => true, :useable => true, :wearable => true})
+    @contents << Item.new("Toothbrush", {:takable => true, :useable => true, :wearable => false})
   end
 
   def move_up
