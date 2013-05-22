@@ -97,13 +97,14 @@ class HandleCommands
 
         if found_inventory_item.name.eql?("Plasma Cutter") && found_room_item.class.eql?(FootLocker)
           puts "Zapp! Opening the Foot Locker!"
-          @game.current_room.items << found_room_item.items
-          @game.current_room.items.flatten!
+          (@game.current_room.items << found_room_item.items).flatten!
           @game.current_room.items.delete found_room_item
           @game.current_room.print_room
         elsif found_inventory_item.name.eql?("Keycard") && found_room_item.name.eql?("Launch Dome Control")
           puts "BUUUUUZZZZZZ! The Launch Dome is opening!"
           @game.current_room.closed = false
+        else
+          puts "It had no effect..."
         end
       else 
         puts "Couldn't use #{use_item_on}"
