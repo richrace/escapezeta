@@ -36,8 +36,7 @@ class HandleCommands
   end
 
   def handle_rocket
-    has_rations = @game.inventory.items.select {|item| item.name.eql?("Rations")}
-    if has_rations.size > 0 && @game.rooms[LaunchControl].closed? == false
+    if @game.inventory.find_item("Rations") && @game.rooms[LaunchControl].closed? == false
       @game.win
     elsif @game.rooms[LaunchControl].closed?
       @game.death "You blasted off straight into the Closed Launch Dome!"
