@@ -48,11 +48,9 @@ class HandleCommands
 
   def handle_take
     take = InputParser.get_command "What will you take?"
+    found_item = @game.current_room.find_and_remove_takeable_item take
 
-    found_items = @game.current_room.contents.select {|item| item.takeable? && item.name.downcase.eql?(take.downcase)}
-
-    if found_items.size == 1
-      found_item = @game.current_room.contents.delete found_items[0]
+    if found_item
       @game.inventory.items << found_item 
       @game.inventory.print_contents
       puts "You have taken #{found_item.name}"
@@ -63,12 +61,10 @@ class HandleCommands
 
   def handle_drop
     drop = InputParser.get_command "What will you drop?"
-
-    found_items = @game.inventory.items.select {|item| item.name.downcase.eql? drop.downcase}
+    found_item = @game.inventory.find_and_remove_item(drop)
     
-    if found_items.size == 1
-      found_item = @game.inventory.items.delete found_items[0] 
-      @game.current_room.contents << found_item
+    if found_item
+      @game.current_room.items << found_item
       puts "Dropping #{found_item.name} in #{@game.current_room.name}"
     else
       puts "You can't drop #{drop}"
@@ -77,11 +73,9 @@ class HandleCommands
 
   def handle_wear
     wear = InputParser.get_command "What will you wear?"
-
-    found_items = @game.inventory.items.select {|item| item.wearable? && item.name.downcase.eql?(wear.downcase)}
+    found_item = @game.inventory.find_and_remove_wearable_item(wear)
   
-    if found_items.size == 1
-      found_item = @game.inventory.items.delete found_items[0]
+    if found_item
       @game.player.wearing << found_item
       puts "Wearing #{found_item.name}"
     else
@@ -91,24 +85,21 @@ class HandleCommands
 
   def handle_use
     use_inventory = InputParser.get_command "What will you use?"
+    found_inventory_item = @game.inventory.find_usable_item(use_inventory)
 
-    found_inventory = @game.inventory.items.select {|item| item.usable? && item.name.downcase.eql?(use_inventory.downcase)}
-
-    if found_inventory.size > 0
-      found_inventory_item = found_inventory[0]
+    if found_inventory_item
       use_item_on = InputParser.get_command "What will use #{found_inventory_item.name} on?"
 
-      found_current = @game.current_room.contents.select {|item| item.usable? && item.name.downcase.eql?(use_item_on.downcase)}
+      found_room_item = @game.current_room.find_usable_item use_item_on
 
-      if found_current.size > 0 
-        found_room_item = found_current[0]
+      if found_room_item
         puts "Using #{found_inventory_item.name} on #{found_room_item.name}..."
 
         if found_inventory_item.name.eql?("Plasma Cutter") && found_room_item.class.eql?(FootLocker)
           puts "Zapp! Opening the Foot Locker!"
-          @game.current_room.contents << found_room_item.contents
-          @game.current_room.contents.flatten!
-          @game.current_room.contents.delete found_room_item
+          @game.current_room.items << found_room_item.items
+          @game.current_room.items.flatten!
+          @game.current_room.items.delete found_room_item
           @game.current_room.print_room
         elsif found_inventory_item.name.eql?("Keycard") && found_room_item.name.eql?("Launch Dome Control")
           puts "BUUUUUZZZZZZ! The Launch Dome is opening!"
