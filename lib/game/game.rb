@@ -42,14 +42,15 @@ class Game
     @input_parser.parse_command InputParser.get_command
   end
 
-  def death
+  def death(message = nil)
     puts "#{@player.name}, you're dead."
-    play_again
+    puts message if message
+    @handle_commands.play_again
   end
 
   def win
     puts "You blast off into space!\nCongratulations, #{@player.name}! You escaped Zeta Base Alpha!"
-    play_again
+    @handle_commands.play_again
   end
 
 end
