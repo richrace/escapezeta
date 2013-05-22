@@ -1,4 +1,4 @@
-require './lib/rooms/room'
+require 'rooms/room'
 
 class ScienceLab < Room
   

@@ -1,4 +1,4 @@
-require './lib/game/menu'
+require 'game/menu'
 
 class Room
   attr_accessor :contents, :name

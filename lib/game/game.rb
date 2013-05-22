@@ -1,8 +1,12 @@
-require './lib/game/menu'
-require './lib/game/player'
-require './lib/rooms/air_lock'
-require './lib/rooms/science_lab'
-require './lib/game/inventory'
+require 'game/menu'
+require 'game/player'
+require 'rooms/air_lock'
+require 'rooms/science_lab'
+require 'rooms/mess_hall'
+require 'rooms/crew_quarters'
+require 'rooms/launch_control'
+require 'rooms/launch_pad'
+require 'game/inventory'
 
 class Game
   CANNOT_MOVE = "You can't go that way!"
@@ -66,6 +70,8 @@ class Game
 
   def preform_action(command)
     case command.split(" ")[0]
+    when "instructions"
+      Menu.instructions
     when "move"
       handle_move command
     when "inventory"
