@@ -91,12 +91,16 @@ class Game
 
   def handle_take
     puts "What will you take?"
+    Menu.prompt
     take = gets.chomp
-    @contents.each { |item| found_item = @contents.delete item if item.takeable && item.name.eql?(take) }
+    found_item = nil
+    @current_room.contents.each { |item| found_item = @current_room.contents.delete item if item.takeable && item.name.eql?(take.capitalize) }
     if found_item
       @inventory.items << found_item 
       @inventory.print_contents
-      puts "You have taken #{found_item}"
+      puts "You have taken #{found_item.name}"
+    else 
+      puts "I couldn't find that item."
     end
   end
 

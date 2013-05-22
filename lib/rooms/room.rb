@@ -29,7 +29,7 @@ class Room
     if @contents.nil? || @contents.empty?
       puts "Nothing of interest." 
     else 
-      puts @contents
+      @contents.each {|item| puts item.name}
     end
   end
 
