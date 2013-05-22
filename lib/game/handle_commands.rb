@@ -19,24 +19,32 @@ class HandleCommands
     found_room = @game.rooms[room]
     if found_room
       if found_room.class == LaunchPad
-        has_suit = @game.player.wearing.select {|item| item.name.eql?("Spacesuit")}
-        @game.death "You opened the Air Lock without a Spacesuit and exploded in Space!" unless has_suit.size > 0        
+        handle_launch_pad      
       elsif found_room.class == Rocket
-        has_rations = @game.inventory.items.select {|item| item.name.eql?("Rations")}
-        if has_rations.size > 0 && @game.rooms[LaunchControl].closed? == false
-          @game.win
-        elsif @game.rooms[LaunchControl].closed?
-          @game.death "You blasted off straight into the Closed Launch Dome!"
-        else
-          @game.death "You blasted off into Space without any rations and die of starvation..."
-        end
+        handle_rocket
       end
       @game.current_room = found_room 
     else 
       puts Game::CANNOT_MOVE
     end
     @game.current_room.print_room
-  end 
+  end
+
+  def handle_launch_pad
+    has_suit = @game.player.wearing.select {|item| item.name.eql?("Spacesuit")}
+    @game.death "You opened the Air Lock without a Spacesuit and exploded in Space!" unless has_suit.size > 0  
+  end
+
+  def handle_rocket
+    has_rations = @game.inventory.items.select {|item| item.name.eql?("Rations")}
+    if has_rations.size > 0 && @game.rooms[LaunchControl].closed? == false
+      @game.win
+    elsif @game.rooms[LaunchControl].closed?
+      @game.death "You blasted off straight into the Closed Launch Dome!"
+    else
+      @game.death "You blasted off into Space without any rations and die of starvation..."
+    end
+  end
 
   def handle_take
     take = InputParser.get_command "What will you take?"
