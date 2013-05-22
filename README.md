@@ -5,3 +5,9 @@
 Command Line game written in Ruby from [demiankz](https://github.com/demiankz/escapezeta).
 
 Forked to refactor the code into an OO approach.
+
+## To Do
+
+Refactor the Game class
+Add a complete set of Tests
+Create classes for all items?
