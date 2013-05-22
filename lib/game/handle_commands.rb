@@ -8,7 +8,7 @@ class HandleCommands
   def play_again
     choice = InputParser.get_command "Would you like to start over? (y/n)"
     if choice == "y" || choice == "yes"
-      reset @game.player.name
+      @game.reset @game.player.name
       @game.start
     else
       exit
@@ -20,13 +20,15 @@ class HandleCommands
     if found_room
       if found_room.class == LaunchPad
         has_suit = @game.player.wearing.select {|item| item.name.eql?("Spacesuit")}
-        death unless has_suit.size > 0
+        @game.death "You opened the Air Lock without a Spacesuit and exploded in Space!" unless has_suit.size > 0        
       elsif found_room.class == Rocket
         has_rations = @game.inventory.items.select {|item| item.name.eql?("Rations")}
-        if has_rations.size > 0
+        if has_rations.size > 0 && @game.rooms[LaunchControl].closed? == false
           @game.win
+        elsif @game.rooms[LaunchControl].closed?
+          @game.death "You blasted off straight into the Closed Launch Dome!"
         else
-          @game.death
+          @game.death "You blasted off into Space without any rations and die of starvation..."
         end
       end
       @game.current_room = found_room 
