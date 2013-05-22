@@ -6,6 +6,7 @@ require 'rooms/mess_hall'
 require 'rooms/crew_quarters'
 require 'rooms/launch_control'
 require 'rooms/launch_pad'
+require 'rooms/rocket'
 require 'game/inventory'
 
 class Game
@@ -22,7 +23,8 @@ class Game
               MessHall => MessHall.new,
               CrewQuarters => CrewQuarters.new,
               LaunchControl => LaunchControl.new,
-              LaunchPad => LaunchPad.new}
+              LaunchPad => LaunchPad.new,
+              Rocket => Rocket.new}
   end
 
   def start
@@ -61,6 +63,8 @@ class Game
   def handle_room_move(room)
     found_room = @rooms[room]
     if found_room
+      # death if found_room.class == LaunchPad && spacesuit is not on.
+      # process if found_room.class == Rocket.
       @current_room = found_room 
     else 
       puts CANNOT_MOVE
