@@ -9,9 +9,9 @@ class AirLock < Room
   def initialize
     super("Air Lock")
     @open = false
-    @contents << Item.new("Spacesuit", {:wearable => true, :useable => true, :takeable => true})
-    @contents << Item.new("Clipboard", {:wearable => false, :useable => false, :takeable => true})
-    @contents << Item.new("Flashlight", {:wearable => false, :useable => true, :takeable => true})
+    @contents << Item.new("Spacesuit", {:wearable => true, :usable => true, :takeable => true})
+    @contents << Item.new("Clipboard", {:wearable => false, :usable => false, :takeable => true})
+    @contents << Item.new("Flashlight", {:wearable => false, :usable => true, :takeable => true})
   end
 
   def move_up 

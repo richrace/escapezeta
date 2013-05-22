@@ -10,9 +10,9 @@ class CrewQuarters < Room
     super("Crew Quarters")
     
     @contents << FootLocker.new
-    @contents << Item.new("Soap", {:takable => true, :useable => true, :wearable => false})
-    @contents << Item.new("Blanket", {:takable => true, :useable => true, :wearable => true})
-    @contents << Item.new("Toothbrush", {:takable => true, :useable => true, :wearable => false})
+    @contents << Item.new("Soap", {:takeable => true, :usable => true, :wearable => false})
+    @contents << Item.new("Blanket", {:takeable => true, :usable => true, :wearable => true})
+    @contents << Item.new("Toothbrush", {:takeable => true, :usable => true, :wearable => false})
   end
 
   def move_up
