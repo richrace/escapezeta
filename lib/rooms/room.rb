@@ -24,5 +24,13 @@ class Room
     nil
   end
 
+  def print_room
+    puts "The #{@name} of a space station. It contains:"
+    if @contents.nil? || @contents.empty?
+      puts "Nothing of interest." 
+    else 
+      puts @contents
+    end
+  end
 
 end

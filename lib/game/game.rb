@@ -29,17 +29,8 @@ class Game
 
   def start
     Menu.start
-    inspect_current_room
+    @current_room.print_room
     preform_action get_command
-  end
-
-  def inspect_current_room
-    puts "The #{@current_room.name} of a space station. It contains:"
-    if @current_room.contents.nil? || @current_room.contents.empty?
-      puts "Nothing of interest." 
-    else 
-      puts @current_room.contents
-    end
   end
 
   def get_command
@@ -69,7 +60,7 @@ class Game
     else 
       puts CANNOT_MOVE
     end
-    inspect_current_room
+    @current_room.print_room
   end
 
   def preform_action(command)
