@@ -4,8 +4,15 @@ require 'game/items/has_items'
 
 describe HasItems do
 
+  class DummyObject 
+    include HasItems
+    def initialize
+      @items = []
+    end
+  end
+
   before(:each) do
-    @item_obj = HasItems.new
+    @item_obj = DummyObject.new
     @item_obj.items << Item.new("Hairbrush", {:wearable => false, :usable => true, :takeable => true})
   end
 

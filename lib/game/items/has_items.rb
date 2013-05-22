@@ -1,9 +1,5 @@
-class HasItems
+module HasItems
   attr_accessor :items
-
-  def initialize
-    @items = []
-  end
 
   def find_item(item_name)
     (@items.select {|item| item.name.downcase.eql? item_name.downcase }).first

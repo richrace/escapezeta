@@ -1,7 +1,8 @@
 require 'game/menu'
 require 'game/items/has_items'
 
-class Room < HasItems
+class Room 
+  include HasItems
   attr_accessor :name
 
   def initialize(room_name, contents = [])

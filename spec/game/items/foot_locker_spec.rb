@@ -20,10 +20,10 @@ describe FootLocker do
     end
 
     it "will have the correct items in it" do
-      @locker.contents.should have(3).items
-      @locker.contents[0].name.should eq "Family Photos"
-      @locker.contents[1].name.should eq "Underwear"
-      @locker.contents[2].name.should eq "Keycard"
+      @locker.items.should have(3).items
+      @locker.items[0].name.should eq "Family Photos"
+      @locker.items[1].name.should eq "Underwear"
+      @locker.items[2].name.should eq "Keycard"
     end
   end
 

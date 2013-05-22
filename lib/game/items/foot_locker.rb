@@ -1,5 +1,6 @@
 class FootLocker < Item
-  attr_accessor :contents, :closed
+  include HasItems
+  attr_accessor :closed
   alias :closed? :closed
 
   def initialize
@@ -7,11 +8,11 @@ class FootLocker < Item
                           :wearable => false,
                           :takeable => false})
     @closed = true
-    @contents = []
+    @items = []
 
-    @contents << Item.new("Family Photos", {:usable => false, :wearable => false, :takeable => true})
-    @contents << Item.new("Underwear", {:usable => false, :wearable => false, :takeable => true})
-    @contents << Item.new("Keycard", {:usable => true, :wearable => false, :takeable => true})
+    @items << Item.new("Family Photos", {:usable => false, :wearable => false, :takeable => true})
+    @items << Item.new("Underwear", {:usable => false, :wearable => false, :takeable => true})
+    @items << Item.new("Keycard", {:usable => true, :wearable => false, :takeable => true})
   end
 
 end

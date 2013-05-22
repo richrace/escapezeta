@@ -1,6 +1,7 @@
 require 'game/items/has_items'
 
-class Inventory < HasItems
+class Inventory 
+  include HasItems
 
   def initialize
     @items = [Item.new("Hairbrush", {:wearable => false, :usable => true, :takeable => true})]
